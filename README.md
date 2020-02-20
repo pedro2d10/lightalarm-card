@@ -103,21 +103,21 @@ Then with these entities we can create a new automation which triggers, when all
         state: Workdays
       - condition: template
         value_template: '{{ now().weekday() < 5 }}'
-   - condition: and
-     conditions:
-     - condition: state
-       entity_id: input_select.lightalarm_options
-       state: Workdays When Present
-     - condition: template
-       value_template: '{{ now().weekday() < 5 }}'
-     - condition: or
-       conditions:
-       - condition: state
-         entity_id: person.chaptergy
-         state: home
-       - condition: state
-         entity_id: person.other_person
-         state: home
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.lightalarm_options
+        state: Workdays When Present
+      - condition: template
+        value_template: '{{ now().weekday() < 5 }}'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: person.chaptergy
+          state: home
+        - condition: state
+          entity_id: person.other_person
+          state: home
 
   action:
     service: script.trigger_lightalarm
